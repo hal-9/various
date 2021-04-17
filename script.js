@@ -18,6 +18,9 @@ darkModeBtn.addEventListener('click', () => {
     logo.setAttribute('fill', '#000000')
   }
   document.body.classList.toggle('darkMode');
+
+  const footer = document.querySelector('footer');
+  footer.classList.toggle('darkMode');
 })
 
 const generateTime = () => {

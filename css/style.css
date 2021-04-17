@@ -30,16 +30,16 @@ header {
   width: 98%;
 }
 
-main {
-  
-}
-
 footer {
   position: fixed;
   bottom: 0px;
   background-color: var(--primary-color);
   width: 98%;
   padding: 10px 15px 0;
+}
+
+footer.darkMode {
+  background-color: var(--secondary-color);
 }
 
 .header__container {

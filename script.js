@@ -1,6 +1,10 @@
 fetch('https://api.openweathermap.org/data/2.5/weather?q=Berlin&units=metric&appid=998827d16513d893f0e9b7e95eaaea4a')
   .then(response => response.json())
-  .then(data => data.main.temp)
+  .then(data => {
+    const temperature = data.main.temp.toLocaleString(undefined, {maximumFractionDigits: 0})
+    document.querySelector('.temperature').innerHTML = `${temperature}°C`
+  }
+)
 
 const darkModeBtn = document.querySelector('.darkModeButton');
 darkModeBtn.addEventListener('click', () => {

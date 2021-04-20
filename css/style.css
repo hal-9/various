@@ -14,8 +14,6 @@ body {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   font-family: 'helvetica';
-  max-width: 1440px;
-  margin: 0 auto;
 }
 
 body.darkMode {
@@ -23,11 +21,31 @@ body.darkMode {
   background-color: var(--secondary-color);
 }
 
+.page__container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 header {
   position: fixed;
   top: 0;
+  left: 0;
   margin: 15px;
   width: 98%;
+  animation-name: blur;
+  animation-duration: 1s;
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(50px);
+  }
+  70% {
+    filter: blur(10px);
+  }
+  100% {
+    filter: blur(0px);
+  }
 }
 
 .header__container {
@@ -45,22 +63,25 @@ header {
 }
   
 .header__text {
-    margin: 0;
+  margin: 0;
 }
 
 .main__text {
   text-transform: uppercase;
-  font-size: 60px;
-  margin: 835px 15px 0 15px;
+  font-size: 53px;
+  margin: 1200px 15px 0 15px;
   text-align: right;
 }
 
 footer {
   position: fixed;
-  bottom: 0px;
+  bottom: 0;
+  left: 0;
   background-color: var(--primary-color);
   width: 98%;
   padding: 10px 15px 0;
+  animation-name: blur;
+  animation-duration: 1s;
 }
 
 footer.darkMode {
@@ -70,4 +91,9 @@ footer.darkMode {
 .footer__container {
   display: flex;
   justify-content: space-between;
+}
+
+
+@media all and (min-width: 1440px) {
+
 }

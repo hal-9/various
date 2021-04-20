@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'helvetica_neueregular';
   src: url('fonts/helvetica_neue_regular-webfont.woff2') format('woff2'),
-       url('fonts/helvetica_neue_regular-webfont.woff') format('woff');
+       url('fonts/helvetica_neue_regular-webfont.woff') format('woff'),
+       url('fonts/helvetica_neue_regular-webfont.ttf')  format('truetype');
 }
 
 :root {
@@ -13,7 +14,9 @@
 body {
   background-color: var(--primary-color);
   color: var(--secondary-color);
-  font-family: 'helvetica';
+  font-family: var(--primary-font);
+  font-weight: 400;
+  margin: 0;
 }
 
 body.darkMode {
@@ -32,8 +35,6 @@ header {
   left: 0;
   margin: 15px;
   width: 98%;
-  animation-name: blur;
-  animation-duration: 1s;
 }
 
 @keyframes blur {
@@ -46,6 +47,11 @@ header {
   100% {
     filter: blur(0px);
   }
+}
+
+.run-blur-animation {
+  animation: blur;
+  animation-duration: 0.8s;
 }
 
 .header__container {
@@ -69,19 +75,22 @@ header {
 .main__text {
   text-transform: uppercase;
   font-size: 53px;
-  margin: 1200px 15px 0 15px;
+  line-height: 59.89px;
+  margin: 900px 15px 0 15px;
   text-align: right;
+}
+
+.main__instagram,
+.main__contact {
+  color: var(--secondary-color);
 }
 
 footer {
   position: fixed;
   bottom: 0;
-  left: 0;
   background-color: var(--primary-color);
   width: 98%;
-  padding: 10px 15px 0;
-  animation-name: blur;
-  animation-duration: 1s;
+  padding: 15px;
 }
 
 footer.darkMode {

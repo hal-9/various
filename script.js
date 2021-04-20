@@ -23,8 +23,22 @@ darkModeBtn.addEventListener('click', () => {
   }
   document.body.classList.toggle('darkMode');
 
+  
+  const header = document.querySelector('header');
+  header.classList.remove('run-blur-animation');
+  void header.offsetWidth;
+  header.classList.add('run-blur-animation');
+
   const footer = document.querySelector('footer');
+  footer.classList.remove('run-blur-animation');
+  void footer.offsetWidth;
+  footer.classList.add('run-blur-animation');
   footer.classList.toggle('darkMode');
+
+  const main = document.querySelector('main');
+  main.classList.remove('run-blur-animation');
+  void main.offsetWidth;
+  main.classList.add('run-blur-animation');
 })
 
 const generateTime = () => {

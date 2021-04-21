@@ -15,7 +15,6 @@ body {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   font-family: var(--primary-font);
-  font-weight: 400;
   margin: 0;
 }
 
@@ -34,7 +33,7 @@ header {
   top: 0;
   left: 0;
   margin: 15px;
-  width: 98%;
+  width: 92%;
 }
 
 @keyframes blur {
@@ -59,25 +58,30 @@ header {
   justify-content: space-between;
 }
 
-.darkModeButton {
+.darkModeButtonHeader {
   margin: 2px 10px 0 0;
+  display: none;
 }
 
 .header__details {
   display: flex;
-  margin: 5px;
+  margin: 13.5px 5px 5px 5px;
 }
   
 .header__text {
   margin: 0;
 }
 
+.main__placeholder {
+  min-height: 100vh;
+}
+
 .main__text {
   text-transform: uppercase;
-  font-size: 53px;
-  line-height: 59.89px;
-  margin: 900px 15px 0 15px;
+  font-size: 3.8vw;
   text-align: right;
+  margin: 15px;
+  /* padding-bottom: 100px; */
 }
 
 .main__instagram,
@@ -85,16 +89,23 @@ header {
   color: var(--secondary-color);
 }
 
+.main__instagram.darkMode,
+.main__contact.darkMode {
+  color: var(--primary-color);
+}
+
 footer {
   position: fixed;
   bottom: 0;
   background-color: var(--primary-color);
-  width: 98%;
-  padding: 15px;
+  width: 94%;
+  padding: 10px 15px 10px 10px;
+  border-top: 2px solid var(--secondary-color);
 }
 
 footer.darkMode {
   background-color: var(--secondary-color);
+  border-top: 2px solid var(--primary-color);
 }
 
 .footer__container {
@@ -102,7 +113,35 @@ footer.darkMode {
   justify-content: space-between;
 }
 
+.footer__copyright {
+  font-size: 23px;
+}
 
-@media all and (min-width: 1440px) {
+.darkModeButtonFooter {
+  display: visible;
+  transform: scale(1.5);
+  margin-top: 6px;
+}
 
+.footer__spotify {
+  display: none;
+}
+
+
+@media all and (min-width: 720px) {
+  .darkModeButtonHeader {
+    display: block;
+  }
+
+  .darkModeButtonFooter {
+    display: none;
+  }
+
+  .footer-container {
+    border-top-color: none;
+  }
+
+  header {
+    width: 80%;
+  }
 }

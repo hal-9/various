@@ -1,14 +1,7 @@
-@font-face {
-  font-family: 'helvetica_neueregular';
-  src: url('fonts/helvetica_neue_regular-webfont.woff2') format('woff2'),
-       url('fonts/helvetica_neue_regular-webfont.woff') format('woff'),
-       url('fonts/helvetica_neue_regular-webfont.ttf')  format('truetype');
-}
-
 :root {
   --primary-color: #26D07C;
   --secondary-color: #000000;
-  --primary-font: 'helvetica_neueregular';
+  --primary-font: 'Helvetica Neue';
 }
 
 body {
@@ -16,6 +9,7 @@ body {
   color: var(--secondary-color);
   font-family: var(--primary-font);
   margin: 0;
+  font-weight: 400;
 }
 
 body.darkMode {
@@ -32,8 +26,14 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  margin: 15px;
+  margin: 0 15px 15px 15px;
   width: 92%;
+  background-color: var(--primary-color);
+  padding-top: 15px;
+}
+
+header.darkMode {
+  background-color: var(--secondary-color);
 }
 
 @keyframes blur {
@@ -78,10 +78,10 @@ header {
 
 .main__text {
   text-transform: uppercase;
-  font-size: 3.8vw;
+  font-size: 19px;
   text-align: right;
   margin: 15px;
-  /* padding-bottom: 100px; */
+  padding-bottom: 80px;
 }
 
 .main__instagram,
@@ -127,21 +127,84 @@ footer.darkMode {
   display: none;
 }
 
+@media all and (min-width: 375px) and (min-height: 812px) {
+  .main__text {
+    font-size: 22px;
+    padding-bottom: 190px;
+  }
+}
 
-@media all and (min-width: 720px) {
+
+@media all and (min-width: 768px) {
+  header {
+    width: 96%;
+  }
+
   .darkModeButtonHeader {
     display: block;
+  }
+
+  .main__text {
+    font-size: 40px;
+    padding-bottom: 150px;
   }
 
   .darkModeButtonFooter {
     display: none;
   }
 
-  .footer-container {
-    border-top-color: none;
+  footer {
+    border-top: 0;
   }
 
+  .footer__copyright {
+    font-size: 17px;
+  }
+}
+
+@media all and (min-width: 1440px) {
   header {
-    width: 80%;
+    width: 98%;
+  }
+
+  .darkModeButtonHeader {
+    display: block;
+  }
+
+  .main__text {
+    font-size: 53px;
+    padding-bottom: 110px;
+  }
+
+  .darkModeButtonFooter {
+    display: none;
+  }
+
+  footer {
+    width: 98%;
+  }
+
+}
+@media all and (min-width: 1441px) {
+  header {
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1440px;
+  }
+
+  .main__text {
+    font-size: 53px;
+    padding-bottom: 110px;
+  }
+
+  footer {
+    border-top: 0;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1440px;
   }
 }

@@ -29,6 +29,7 @@ darkModeBtnHeader.addEventListener('click', () => {
   header.classList.remove('run-blur-animation');
   void header.offsetWidth;
   header.classList.add('run-blur-animation');
+  header.classList.toggle('darkMode');
 
   const footer = document.querySelector('footer');
   footer.classList.remove('run-blur-animation');
@@ -67,6 +68,7 @@ darkModeBtnFooter.addEventListener('click', () => {
   header.classList.remove('run-blur-animation');
   void header.offsetWidth;
   header.classList.add('run-blur-animation');
+  header.classList.toggle('darkMode');
 
   footer.classList.remove('run-blur-animation');
   void footer.offsetWidth;

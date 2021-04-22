@@ -153,7 +153,8 @@ footer.darkMode {
     display: none;
   }
 
-  footer {
+  footer,
+  footer.darkMode {
     border-top: 0;
   }
 

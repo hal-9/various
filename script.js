@@ -6,81 +6,6 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=Berlin&units=metric&app
   }
 )
 
-const darkModeBtnHeader = document.querySelector('.darkModeButtonHeader');
-darkModeBtnHeader.addEventListener('click', () => {
-  if (darkModeBtnHeader.getAttribute('fill') === "#000000") {
-    darkModeBtnHeader.setAttribute('fill', '#26D07C')
-  } else {
-    darkModeBtnHeader.setAttribute('fill', '#000000')
-  }
-
-  const logo = document.querySelector('.logo');
-  if (logo.getAttribute('fill') === "#000000") {
-    logo.setAttribute('fill', '#26D07C')
-  } else {
-    logo.setAttribute('fill', '#000000')
-  }
-  document.body.classList.toggle('darkMode');
-  document.querySelector('.main__instagram').classList.toggle('darkMode');
-  document.querySelector('.main__contact').classList.toggle('darkMode');
-
-  
-  const header = document.querySelector('header');
-  header.classList.remove('run-blur-animation');
-  void header.offsetWidth;
-  header.classList.add('run-blur-animation');
-  header.classList.toggle('darkMode');
-
-  const footer = document.querySelector('footer');
-  footer.classList.remove('run-blur-animation');
-  void footer.offsetWidth;
-  footer.classList.add('run-blur-animation');
-  footer.classList.toggle('darkMode');
-
-  const main = document.querySelector('main');
-  main.classList.remove('run-blur-animation');
-  void main.offsetWidth;
-  main.classList.add('run-blur-animation');
-})
-
-const darkModeBtnFooter = document.querySelector('.darkModeButtonFooter');
-darkModeBtnFooter.addEventListener('click', () => {
-  if (darkModeBtnFooter.getAttribute('fill') === "#000000") {
-    darkModeBtnFooter.setAttribute('fill', '#26D07C')
-  } else {
-    darkModeBtnFooter.setAttribute('fill', '#000000')
-  }
-
-  const logo = document.querySelector('.logo');
-  if (logo.getAttribute('fill') === "#000000") {
-    logo.setAttribute('fill', '#26D07C')
-  } else {
-    logo.setAttribute('fill', '#000000')
-  }
-  document.body.classList.toggle('darkMode');
-  document.querySelector('.main__instagram').classList.toggle('darkMode');
-  document.querySelector('.main__contact').classList.toggle('darkMode');
-
-  const footer = document.querySelector('footer');
-  footer.classList.toggle('.darkMode');
-  
-  const header = document.querySelector('header');
-  header.classList.remove('run-blur-animation');
-  void header.offsetWidth;
-  header.classList.add('run-blur-animation');
-  header.classList.toggle('darkMode');
-
-  footer.classList.remove('run-blur-animation');
-  void footer.offsetWidth;
-  footer.classList.add('run-blur-animation');
-  footer.classList.toggle('darkMode');
-
-  const main = document.querySelector('main');
-  main.classList.remove('run-blur-animation');
-  void main.offsetWidth;
-  main.classList.add('run-blur-animation');
-})
-
 const generateTime = () => {
   const rawTime = new Date();
   const rawHours = rawTime.getHours();
@@ -91,4 +16,35 @@ const generateTime = () => {
 
   document.querySelector('.time').innerHTML = `${finalHours}:${finalMinutes} `;
 }
-setInterval(generateTime, 100);
+generateTime();
+setInterval(generateTime, 1000);
+
+const darkModeBtnHeader = document.querySelector('.darkModeButtonHeader');
+const darkModeBtnFooter = document.querySelector('.darkModeButtonFooter');
+const logo = document.querySelector('.logo');
+
+const darkModeSwitcher = (element) => {
+  if (element.getAttribute('fill') === "#000000") {
+    element.setAttribute('fill', '#26D07C')
+    } else {
+        element.setAttribute('fill', '#000000')
+      }  
+  if (logo.getAttribute('fill') === "#000000") {
+    logo.setAttribute('fill', '#26D07C')
+  } else {
+    logo.setAttribute('fill', '#000000')
+  }
+  document.body.classList.toggle('darkMode');
+  document.querySelector('.main__instagram').classList.toggle('darkMode');
+  document.querySelector('.main__contact').classList.toggle('darkMode');
+  document.querySelector('header').classList.toggle('darkMode');
+  document.querySelector('footer').classList.toggle('darkMode');
+}
+
+darkModeBtnHeader.addEventListener('click', () => {
+  darkModeSwitcher(darkModeBtnHeader);
+});
+darkModeBtnFooter.addEventListener('click', () => {
+  darkModeSwitcher(darkModeBtnFooter);
+})
+

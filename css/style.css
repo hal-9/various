@@ -12,27 +12,12 @@ body {
   font-weight: 400;
 }
 
+p {
+  margin: 0;
+}
+
 body.darkMode {
   color: var(--primary-color);
-  background-color: var(--secondary-color);
-}
-
-.page__container {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 0 15px 15px 15px;
-  width: 92%;
-  background-color: var(--primary-color);
-  padding-top: 15px;
-}
-
-header.darkMode {
   background-color: var(--secondary-color);
 }
 
@@ -53,6 +38,11 @@ header.darkMode {
   animation-duration: 0.8s;
 }
 
+header {
+  margin: 7px 7px 28px 7px;
+  max-height: 10vh;
+}
+
 .header__container {
   display: flex;
   justify-content: space-between;
@@ -65,23 +55,19 @@ header.darkMode {
 
 .header__details {
   display: flex;
-  margin: 13.5px 5px 5px 5px;
-}
-  
-.header__text {
-  margin: 0;
+  margin-top: 13.5px;
 }
 
-.main__placeholder {
-  min-height: 100vh;
+main {
+  margin: 0 7px 14px 7px;
+  height: 83vh;
 }
 
 .main__text {
   text-transform: uppercase;
   font-size: 19px;
   text-align: right;
-  margin: 15px;
-  padding-bottom: 80px;
+  font-weight: 400;
 }
 
 .main__instagram,
@@ -98,8 +84,8 @@ footer {
   position: fixed;
   bottom: 0;
   background-color: var(--primary-color);
-  width: 94%;
-  padding: 5px 20px 5px 10px;
+  width: 100vw;
+  padding: 5px 0 5px 0;
   border-top: 2px solid var(--secondary-color);
 }
 
@@ -111,46 +97,55 @@ footer.darkMode {
 .footer__container {
   display: flex;
   justify-content: space-between;
+  margin: 0 15px;
 }
 
 .footer__copyright {
   font-size: 23px;
-  margin-left: 10px;
 }
 
 .darkModeButtonFooter {
   display: visible;
   transform: scale(1.5);
-  margin: 6.5px 10px 0 0;
+  margin-top: 6.5px;
 }
 
 .footer__spotify {
   display: none;
 }
 
-@media all and (min-width: 375px) and (min-height: 812px) {
+@media all and (orientation: landscape) {
   .main__text {
-    font-size: 22px;
-    padding-bottom: 190px;
+    font-size: 17px;
   }
 }
 
-@media all and (min-width: 768px) {
-  header {
-    width: 96%;
-  }
-
-  .darkModeButtonHeader {
-    display: block;
-  }
-
+@media all and (min-width: 375px) and (min-height: 812px) {
   .main__text {
-    font-size: 40px;
-    padding-bottom: 150px;
+    font-size: 23px;
+  }
+}
+
+@media all and (min-width: 768px) and (orientation: landscape) {
+  .main__text {
+    font-size: 21px;
   }
 
-  .darkModeButtonFooter {
-    display: none;
+  footer,
+  footer.darkMode {
+    border-top: none;
+  }
+}
+
+@media all and (min-width: 768px) and (orientation: portrait) {
+  header {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
+  main {
+    margin-left: 15px;
+    margin-right: 15px;
   }
 
   footer,
@@ -159,37 +154,65 @@ footer.darkMode {
     background-color: transparent;
   }
 
-  .footer__copyright {
-    font-size: 17px;
-  }
-}
-
-@media all and (min-width: 1440px) {
-  header {
-    width: 98%;
-  }
-
   .darkModeButtonHeader {
     display: block;
   }
 
   .main__text {
-    font-size: 53px;
-    padding-bottom: 110px;
+    font-size: 40px;
   }
 
   .darkModeButtonFooter {
     display: none;
   }
 
-  footer {
-    width: 98%;
+  .footer__copyright {
+    font-size: 17px;
+  }
+}
+
+@media all and (min-width: 1024px) and (orientation: landscape) {
+  header {
+    margin-left: 15px;
+    margin-right: 15px;
   }
 
+  .darkModeButtonHeader {
+    display: block;
+  }
+  
+  main {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .main__text {
+    font-size: 40px;
+  }
+
+  .darkModeButtonFooter {
+    display: none;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .darkModeButtonHeader {
+    display: block;
+  }
+
+  .main__text {
+    font-size: 53px;
+  }
+
+  .darkModeButtonFooter {
+    display: none;
+  }
 }
 
 @media all and (min-width: 1920px) {
-  
+  .main__text {
+    font-size: 53px;
+  }
 }
 
 @media all and (min-width: 1920px) {

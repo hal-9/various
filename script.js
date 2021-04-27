@@ -37,7 +37,6 @@ const darkModeSwitcher = (element) => {
   document.body.classList.toggle('darkMode');
   document.querySelector('.main__instagram').classList.toggle('darkMode');
   document.querySelector('.main__contact').classList.toggle('darkMode');
-  document.querySelector('header').classList.toggle('darkMode');
   document.querySelector('footer').classList.toggle('darkMode');
 }
 

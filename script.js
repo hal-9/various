@@ -47,3 +47,27 @@ darkModeBtnFooter.addEventListener('click', () => {
   darkModeSwitcher(darkModeBtnFooter);
 })
 
+
+fetch("https://api.spotify.com/v1/me/player/currently-playing?market=DE", {
+  headers: {
+    Accept: "application/json",
+    Authorization: "Bearer BQDVU82QXf9_ZUej6Rw6kqA5KEUeVF1DbfWTraE84M0zdFtIe6C_jnwFzYii9FkIpUWFM448vUOTfdKtpWxUJhILWFwhE1BqjGHLQyUiw2VlAooyZEhC4vnMUE7HFpfX-DRA-z7l9QObcgVjn8jjKaM",
+    "Content-Type": "application/json"
+  }
+})
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+})
+
+// fetch("https://api.spotify.com/v1/me/player/recently-played", {
+//   headers: {
+//     Accept: "application/json",
+//     Authorization: "Bearer BQD7a6HZCnVHG6xLAEK7NW1oMytVrFOCM-hn1QmI0MVoek9s8PlTOjhFPggYypemNERSiuU5kuyFu-8CaLhYnLnU5SuquqacgvbACFqBuxXRcmybsdXQVnciiR6a8QJOBtjjLLp-jFDXurfFhu3OpOSmOw",
+//     "Content-Type": "application/json"
+//   }
+// })
+// .then(response => response.json())
+// .then(data => {
+//   console.log(data);
+// })

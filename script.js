@@ -63,15 +63,13 @@ function requestAuthorization(){
   window.location.href = url;
 }
 
-const code = 'AQDvkUD54yNuc7mBpmmQf0cXYugC8OtB9BeJI5j_cGrA7TjZCzn-XSaiqvLq_mKlRA96hM7MmbK1QjK8_hazFkGa8OqRRfyOok0AxWhuHMaQY77wLU4CyAIfaE_pHormpNbBRjRbq4uNyzA1SJaP0-QM-vBtlkC8xvohFRCHKnSAlnQlvV_gb0Ca8fIWdiFzoBNMs1GmgmFWhNda0TBOrFV04SYohouKiZH03C_G68t2SZIypEu7cEEoy6AdcyZSYn01yaghDuyWT6QVbmQ1Yk8Y7Qk3Sgo08FTKks8ZcXdKgTueZbU4Qe__5fz_5L6LO7grmBqEutCo3hVDev3PcA_8XtI1GT9eTSdj75vrUqZNEAYlsR4WJff0jqRVK4S36hD7TRtGk4d1aCICrJKrJHdgRvDTLdYI2ciWL5fRPX5FiFqM8KofOhaCCQ';
+const code = ""
 
 function fetchAccessToken(code){
   console.log('fetchAccessToken fired');
   let body = "grant_type=authorization_code";
   body += "&code=" + code;
   body += "&redirect_uri=" + encodeURI(redirect_uri);
-  // body += "&client_id=" + client_id;
-  // body += "&client_secret" + client_secret;
   console.log(body);
   callAuthorizationApi(body);
 }

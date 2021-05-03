@@ -49,8 +49,8 @@ darkModeBtnFooter.addEventListener('click', () => {
 
 const redirect_uri = "http://127.0.0.1:5500/index.html"
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
-const client_id = "e1418b9264424319a857c3e2b53b0eb6"
-const client_secret = "7ebfc44506374ab7a5e6809e54930d4e"
+const client_id = "/"
+const client_secret = "/"
 
 function requestAuthorization(){
   console.log('requestAuthorization fired');

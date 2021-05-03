@@ -100,7 +100,7 @@ footer.darkMode {
 .footer__container {
   display: flex;
   justify-content: space-between;
-  margin: 0 15px;
+  margin: 0 7px;
 }
 
 .footer__copyright {
@@ -165,8 +165,6 @@ footer.darkMode {
   footer.darkMode {
     border-top: none;
     width: 96.5%;
-    margin-right: 15px;
-    margin-left: 15px;
   }
 
   .darkModeButtonFooter {
@@ -234,6 +232,8 @@ footer.darkMode {
   .darkModeButtonFooter {
     display: none;
   }
+
+  
 }
 
 @media all and (min-width: 1440px) {

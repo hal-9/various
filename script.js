@@ -47,87 +47,28 @@ darkModeBtnFooter.addEventListener('click', () => {
   darkModeSwitcher(darkModeBtnFooter);
 })
 
-const oAnimations = [document.getElementsByClassName('.oAnimation_1'), 
-                    document.getElementsByClassName('.oAnimation_2'),
-                    document.getElementsByClassName('.oAnimation_3'),
-                    document.getElementsByClassName('.oAnimation_4'),
-                    document.getElementsByClassName('.oAnimation_5'),
-                    document.getElementsByClassName('.oAnimation_6')]
+const oAnimations = [
+  document.getElementById('oAnimation_1'), 
+  document.getElementById('oAnimation_2'),
+  document.getElementById('oAnimation_3'),
+  document.getElementById('oAnimation_4'),
+  document.getElementById('oAnimation_5'),
+  document.getElementById('oAnimation_6')
+]
 
-// const redirect_uri = "http://127.0.0.1:5500/index.html"
-// const AUTHORIZE = "https://accounts.spotify.com/authorize"
-// const client_id = "/"
-// const client_secret = "/"
+const oAnimationInitial = () => {
+  const randomPick = Math.floor((Math.random() * oAnimations.length));
+  oAnimations[randomPick].style.display="block";
+};
+oAnimationInitial();
 
-// function requestAuthorization(){
-//   console.log('requestAuthorization fired');
-//   let url = AUTHORIZE;
-//   url += "?client_id=" + client_id;
-//   url += "&response_type=code";
-//   url += "&redirect_uri=" + encodeURI(redirect_uri);
-//   url += "&show_dialog=true";
-//   url += "&scope=user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private";
-//   window.location.href = url;
-// }
-
-// const code = ""
-
-// function fetchAccessToken(code){
-//   console.log('fetchAccessToken fired');
-//   let body = "grant_type=authorization_code";
-//   body += "&code=" + code;
-//   body += "&redirect_uri=" + encodeURI(redirect_uri);
-//   console.log(body);
-//   callAuthorizationApi(body);
-// }
-
-// function refreshAccessToken(){
-//   console.log('refresh accesstoken fired');
-//   refresh_token = localStorage.getItem("refresh_token");
-//   let body = "grant_type=refresh_token";
-//   body += "&refresh_token=" + refresh_token;
-//   body += "&client_id=" + client_id;
-//   callAuthorizationApi(body);
-// }
-
-// function callAuthorizationApi(body) {
-//   console.log('callAuthorizationApi fired');
-//   fetch('https://accounts.spotify.com/api/token', {
-//     method: "POST",
-//     body: body,
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//       "Authorization": "Basic " + btoa(client_id + ":" + client_secret),
-//     }
-//   })
-//   .then(response => handleAuthorizationResponse(response));
-// }
-
-// function handleAuthorizationResponse(response) {
-//   console.log('handleAuthorizationFired');
-//   console.log(response);
-//   if (response.status === 200) {
-//     console.log("if fired");
-//     response.json()
-//     .then(bodyData => {
-//       if (bodyData.access_token !== undefined) {
-//         console.log('access_token ist defined')
-//         access_token = bodyData.access_token;
-//         localStorage.setItem("access_token", access_token);
-//       }
-//       if (bodyData.refresh_token !== undefined) {
-//         refresh_token = bodyData.refresh_token;
-//         localStorage.setItem("refresh_token", refresh_token);
-//       }
-//     })
-//   }
-//   else if (response.status === 400) {
-//     console.log('else if fired')
-//     refreshAccessToken();
-//     }
-//   else {
-//     alert('there was an error with code ' + response.status);
-//   }
-// }
-
-// fetchAccessToken(code);
+setInterval(function() {
+  console.log('animationinterval called');
+  oAnimations.forEach(element => {
+    element.style.display="none";
+  });
+  const randomPick = Math.floor((Math.random() * oAnimations.length));
+  oAnimations[randomPick].style.display="block";
+  
+  oAnimations[randomPick].classList.add('run-logo-blur-animation');
+}, 2000);

@@ -38,6 +38,23 @@ body.darkMode {
   animation-duration: 0.8s;
 }
 
+@keyframes logo-blur {
+  0% {
+    filter: blur(5px);
+  }
+  70% {
+    filter: blur(1px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
+.run-logo-blur-animation {
+  animation: logo-blur;
+  animation-duration: 0.8s;
+}
+
 header {
   position: fixed;
   width: 96%;
@@ -49,6 +66,15 @@ header {
 .header__container {
   display: flex;
   justify-content: space-between;
+}
+
+#oAnimation_1,
+#oAnimation_2,
+#oAnimation_3,
+#oAnimation_4,
+#oAnimation_5,
+#oAnimation_6 {
+  display: none;
 }
 
 .darkModeButtonHeader {

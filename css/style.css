@@ -42,17 +42,23 @@ body.darkMode {
   0% {
     filter: blur(5px);
   }
-  70% {
-    filter: blur(1px);
-  }
+  /* 70% {
+    filter: blur(2px);
+  } */
   100% {
     filter: blur(0px);
   }
 }
 
+.logo {
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  margin-top: -8px;
+}
+
 .run-logo-blur-animation {
   animation: logo-blur;
-  animation-duration: 0.8s;
+  animation-duration: 1.2s;
 }
 
 header {
@@ -60,7 +66,6 @@ header {
   width: 96%;
   top: 0;
   margin: 7px 7px 0 7px;
-  /* max-height: 10vh; */
 }
 
 .header__container {

@@ -63,12 +63,10 @@ const oAnimationInitial = () => {
 oAnimationInitial();
 
 setInterval(function() {
-  console.log('animationinterval called');
   oAnimations.forEach(element => {
     element.style.display="none";
   });
   const randomPick = Math.floor((Math.random() * oAnimations.length));
   oAnimations[randomPick].style.display="block";
-  
   oAnimations[randomPick].classList.add('run-logo-blur-animation');
 }, 2000);

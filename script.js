@@ -68,5 +68,4 @@ setInterval(function() {
   });
   const randomPick = Math.floor((Math.random() * oAnimations.length));
   oAnimations[randomPick].style.display="block";
-  oAnimations[randomPick].classList.add('run-logo-blur-animation');
-}, 2000);
+}, 5000);

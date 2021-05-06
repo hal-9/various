@@ -93,8 +93,10 @@ header {
 }
 
 main {
-  margin: 70px 7px 14px 7px;
-  height: 83vh;
+  margin: 0 7px 14px 7px;
+  height: 590px;
+  display: flex;
+  align-items: center;
 }
 
 .main__text {
@@ -149,12 +151,19 @@ footer.darkMode {
 }
 
 @media all and (orientation: landscape) {
+  main {
+    height: 298px
+  }
   .main__text {
     font-size: 17px;
   }
 }
 
 @media all and (min-width: 375px) and (min-height: 812px) {
+  main {
+    height: 727px;
+  }
+
   .main__text {
     font-size: 23px;
   }
@@ -171,8 +180,7 @@ footer.darkMode {
 @media all and (min-width: 768px) and (orientation: landscape) {
   header {
     width: 96.5%;
-    margin-right: 15px;
-    margin-left: 15px;
+    margin: 7px 15px 0 15px;
   }
 
   .header__text {
@@ -184,6 +192,7 @@ footer.darkMode {
   }
 
   main {
+    height: 360px;
     margin-right: 15px;
     margin-left: 15px;
   }
@@ -192,10 +201,13 @@ footer.darkMode {
     font-size: 21px;
   }
 
-  footer,
-  footer.darkMode {
+  footer {
     border-top: none;
     width: 96.5%;
+  }
+
+  footer.darkMode {
+    border-top: none;
   }
 
   .darkModeButtonFooter {
@@ -205,8 +217,7 @@ footer.darkMode {
 
 @media all and (min-width: 768px) and (orientation: portrait) {
   header {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 7px 15px 0 15px;
   }
 
   .header__text {
@@ -214,6 +225,7 @@ footer.darkMode {
   }
   
   main {
+    height: 949px;
     margin-left: 15px;
     margin-right: 15px;
   }
@@ -229,7 +241,7 @@ footer.darkMode {
   }
 
   .main__text {
-    font-size: 40px;
+    font-size: 39px;
   }
 
   .darkModeButtonFooter {
@@ -243,8 +255,7 @@ footer.darkMode {
 
 @media all and (min-width: 1024px) and (orientation: landscape) {
   header {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 15px 15px 0 15px;
   }
 
   .darkModeButtonHeader {
@@ -252,12 +263,13 @@ footer.darkMode {
   }
   
   main {
+    height: 693px;
     margin-left: 15px;
     margin-right: 15px;
   }
 
   .main__text {
-    font-size: 40px;
+    font-size: 38px;
   }
 
   .darkModeButtonFooter {
@@ -272,6 +284,14 @@ footer.darkMode {
     display: block;
   }
 
+  header {
+    width: 98%;
+  }
+
+  main {
+    height: 817px;
+  }
+
   .main__text {
     font-size: 53px;
   }
@@ -279,14 +299,96 @@ footer.darkMode {
   .darkModeButtonFooter {
     display: none;
   }
-}
 
-@media all and (min-width: 1920px) {
-  .main__text {
-    font-size: 53px;
+  footer {
+    width: 100%;
+    padding: 5px 0 15px 0;
+  }
+
+  .footer__copyright {
+    font-size: 17px;
+  }
+  
+  .footer__container {
+    margin: 0 20px;
   }
 }
 
 @media all and (min-width: 1920px) {
+  header {
+    margin: 20px 20px 0 20px;
+  }
   
+  .header__text {
+    font-size: 20px;
+  }
+  
+  .darkModeButtonHeader {
+    transform: scale(1.25);
+    margin-top: 6px;
+  }
+
+  main {
+    height: 1001px;
+    margin: 0 20px;
+  }
+
+  .main__text {
+    font-size: 65px;
+  }
+
+  footer {
+    padding: 5px 0 20px 0;
+  }
+
+  .footer__copyright {
+    font-size: 20px;
+  }
+
+  .footer__container {
+    margin: 0 20px;
+  }
+}
+
+@media all and (min-width: 3840px) {
+  header {
+    margin: 40px 40px 0 40px;
+    width: 97.7%;
+  }
+
+  .header__logo {
+    transform: scale(2.5);
+    margin: 30px 0 0 100px;
+  }
+
+  .darkModeButtonHeader {
+    transform: scale(2);
+    margin-top: 13px;
+  }
+
+  main {
+    height: 2066px;
+    margin: 0 40px;
+  }
+
+  .header__text {
+    font-size: 30px;
+  }
+
+  .main__text {
+    font-size: 131px;
+  }
+
+  footer {
+    width: 100%;
+    padding-bottom: 40px;
+  }
+
+  .footer__copyright {
+    font-size: 30px;
+  }
+
+  .footer__container {
+    margin: 0 40px;
+  }
 }

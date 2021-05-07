@@ -135,11 +135,10 @@ function handleAuthorizationResponse(response) {
     response.json()
     .then(bodyData => {
       if (bodyData.access_token !== undefined) {
-        console.log('access_token ist defined')
+        // console.log('access_token ist defined')
         access_token = bodyData.access_token;
       }
       if (bodyData.refresh_token !== undefined) {
-        console.log('refresh_token')
         refresh_token = bodyData.refresh_token;
       }
     })
@@ -153,7 +152,8 @@ function handleAuthorizationResponse(response) {
   }
 }
 fetchAccessToken(code);
-
+console.log(access_token);
+console.log(refresh_token);
 
 // fetch('https://api.spotify.com/v1/me/player/currently-playing?market=DE', {
 //   headers: {

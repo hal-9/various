@@ -92,100 +92,100 @@ function requestAuthorization(){
   window.location.href = url;
 }
 
-// code = "test"
+const code = ""
 
-// function fetchAccessToken(code){
-//   // console.log('fetchAccessToken fired');
-//   let body = "grant_type=authorization_code";
-//   body += "&code=" + code;
-//   body += "&redirect_uri=" + encodeURI(redirect_uri);
-//   // console.log(body);
-//   callAuthorizationApi(body);
-// }
+function fetchAccessToken(code){
+  // console.log('fetchAccessToken fired');
+  let body = "grant_type=authorization_code";
+  body += "&code=" + code;
+  body += "&redirect_uri=" + encodeURI(redirect_uri);
+  // console.log(body);
+  callAuthorizationApi(body);
+}
 
-// function refreshAccessToken(){
-//   // console.log('refresh accesstoken fired');
-//   refresh_token = localStorage.getItem("refresh_token");
-//   let body = "grant_type=refresh_token";
-//   body += "&refresh_token=" + refresh_token;
-//   body += "&client_id=" + client_id;
-//   callAuthorizationApi(body);
-// }
+function refreshAccessToken(){
+  // console.log('refresh accesstoken fired');
+  refresh_token = localStorage.getItem("refresh_token");
+  let body = "grant_type=refresh_token";
+  body += "&refresh_token=" + refresh_token;
+  body += "&client_id=" + client_id;
+  callAuthorizationApi(body);
+}
 
-// function callAuthorizationApi(body) {
-//   // console.log('callAuthorizationApi fired');
-//   fetch('https://accounts.spotify.com/api/token', {
-//     method: "POST",
-//     body: body,
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//       "Authorization": "Basic " + btoa(client_id + ":" + client_secret),
-//     }
-//   })
-//   .then(response => handleAuthorizationResponse(response));
-// }
+function callAuthorizationApi(body) {
+  // console.log('callAuthorizationApi fired');
+  fetch('https://accounts.spotify.com/api/token', {
+    method: "POST",
+    body: body,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic " + btoa(client_id + ":" + client_secret),
+    }
+  })
+  .then(response => handleAuthorizationResponse(response));
+}
 
-// function handleAuthorizationResponse(response) {
-//   // console.log('handleAuthorizationFired');
-//   // console.log(response);
-//   if (response.status === 200) {
-//     // console.log("if fired");
-//     response.json()
-//     .then(bodyData => {
-//       if (bodyData.access_token !== undefined) {
-//         // console.log('access_token ist defined')
-//         access_token = bodyData.access_token;
-//         localStorage.setItem("access_token", access_token);
-//       }
-//       if (bodyData.refresh_token !== undefined) {
-//         refresh_token = bodyData.refresh_token;
-//         localStorage.setItem("refresh_token", refresh_token);
-//       }
-//     })
-//   }
-//   else if (response.status === 400) {
-//     // console.log('else if fired')
-//     refreshAccessToken();
-//     }
-//   else {
-//     alert('there was an error with code ' + response.status);
-//   }
-// }
-// fetchAccessToken(code);  
+function handleAuthorizationResponse(response) {
+  // console.log('handleAuthorizationFired');
+  // console.log(response);
+  if (response.status === 200) {
+    // console.log("if fired");
+    response.json()
+    .then(bodyData => {
+      if (bodyData.access_token !== undefined) {
+        // console.log('access_token ist defined')
+        access_token = bodyData.access_token;
+        localStorage.setItem("access_token", access_token);
+      }
+      if (bodyData.refresh_token !== undefined) {
+        refresh_token = bodyData.refresh_token;
+        localStorage.setItem("refresh_token", refresh_token);
+      }
+    })
+  }
+  else if (response.status === 400) {
+    // console.log('else if fired')
+    refreshAccessToken();
+    }
+  else {
+    alert('there was an error with code ' + response.status);
+  }
+}
+fetchAccessToken(code);  
 
-// fetch('https://api.spotify.com/v1/me/player/currently-playing?market=DE', {
-//   headers: {
-//     Accept: "application/json",
-//     Authorization: "Bearer " + localStorage.getItem("access_token"),
-//     "Content-Type": "application/json"
-//   }
-// })
-// .then(response => {
-//   if (response.status === 204) {
-//     console.log('yo there is nothing playing')
-//     fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", {
-//       headers: {
-//         Accept: "application/json",
-//         Authorization: "Bearer " + localStorage.getItem("access_token"),
-//         "Content-Type": "application/json"
-//       }
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//       let albumName = data.items[0].track.album.name;
-//       let songName = data.items[0].track.name;
-//       let artistName = data.items[0].track.artists[0].name;
-//       document.querySelector('.footer__spotify').innerHTML = `${albumName}, ${artistName} - ${songName}`;
-//     })
-//   }
-//   else if (response.status === 200) {
-//     return response.json();
-//   }
-// })
-// .then(data => {
-//   let albumName = data.item.album.name;
-//   let songName = data.item.name;
-//   let artistName = data.item.artists[0].name;
-//   document.querySelector('.footer__spotify').innerHTML = `${albumName}, ${artistName} - ${songName}`;
-//   document.querySelector('.footer__onAir').classList.add('onAir-Animation');
-// });
+fetch('https://api.spotify.com/v1/me/player/currently-playing?market=DE', {
+  headers: {
+    Accept: "application/json",
+    Authorization: "Bearer " + localStorage.getItem("access_token"),
+    "Content-Type": "application/json"
+  }
+})
+.then(response => {
+  if (response.status === 204) {
+    console.log('yo there is nothing playing')
+    fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", {
+      headers: {
+        Accept: "application/json",
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      let albumName = data.items[0].track.album.name;
+      let songName = data.items[0].track.name;
+      let artistName = data.items[0].track.artists[0].name;
+      document.querySelector('.footer__spotify').innerHTML = `${albumName}, ${artistName} - ${songName}`;
+    })
+  }
+  else if (response.status === 200) {
+    return response.json();
+  }
+})
+.then(data => {
+  let albumName = data.item.album.name;
+  let songName = data.item.name;
+  let artistName = data.item.artists[0].name;
+  document.querySelector('.footer__spotify').innerHTML = `${albumName}, ${artistName} - ${songName}`;
+  document.querySelector('.footer__onAir').classList.add('onAir-Animation');
+});

@@ -22,6 +22,7 @@ setInterval(generateTime, 1000);
 const darkModeBtnHeader = document.querySelector('.darkModeButtonHeader');
 const darkModeBtnFooter = document.querySelector('.darkModeButtonFooter');
 const logo = document.querySelector('.logo');
+const onAir = document.querySelector('.footer__onAir');
 
 const darkModeSwitcher = (element) => {
   if (element.getAttribute('fill') === "#000000") {
@@ -33,6 +34,11 @@ const darkModeSwitcher = (element) => {
     logo.setAttribute('fill', '#26D07C')
   } else {
     logo.setAttribute('fill', '#000000')
+  }
+  if (onAir.getAttribute('fill') === "#000000") {
+    onAir.setAttribute('fill', '#26D07C')
+  } else {
+    onAir.setAttribute('fill', '#000000')
   }
   document.body.classList.toggle('darkMode');
   document.querySelector('.main__instagram').classList.toggle('darkMode');

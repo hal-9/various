@@ -147,6 +147,9 @@ footer.darkMode {
 
 .footer__spotify-container {
   display: flex;
+  position: absolute;
+  top: -30px;
+  right: 6px;
 }
 
 .footer__onAir {
@@ -214,6 +217,12 @@ footer.darkMode {
   .darkModeButtonFooter {
     margin-top: 6.5px;
   }
+
+  .footer__spotify-container {
+    position: absolute;
+    top: -30px;
+    right: 6px;
+  }
 }
 
 @media all and (min-width: 768px) and (orientation: landscape) {
@@ -251,6 +260,10 @@ footer.darkMode {
 
   .darkModeButtonFooter {
     display: none;
+  }
+
+  .footer__spotify-container {
+    position: static;
   }
 }
 
@@ -295,6 +308,10 @@ footer.darkMode {
   .footer__copyright,
   .footer__spotify {
     font-size: 17px;
+  }
+
+  .footer__spotify-container {
+    position: static;
   }
 }
 

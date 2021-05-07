@@ -145,8 +145,32 @@ footer.darkMode {
   margin-top: 3.5px;
 }
 
+.footer__spotify-container {
+  display: flex;
+}
+
+.footer__onAir {
+  margin: 3px 10px 0 0;
+}
+
+.footer__marquee {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .footer__spotify {
-  display: none;
+  animation: marquee-animation 10s linear infinite;
+  display: inline-block;
+}
+
+@keyframes marquee-animation {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(0); }
+  45% { transform: translateX(calc(-100% + 250px)); }
+  55% { transform: translateX(calc(-100% + 250px)); }
+  90% { transform: translateX(0); }
+  100% { transform: translateX(0); }
 }
 
 @media all and (orientation: landscape) {

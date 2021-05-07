@@ -147,11 +147,6 @@ function handleAuthorizationResponse(response) {
 }
 fetchAccessToken(code);  
 
-let albumName = "";
-let songName = "";
-let artistName = "";
-
-
 fetch('https://api.spotify.com/v1/me/player/currently-playing?market=DE', {
   headers: {
     Accept: "application/json",
@@ -159,12 +154,32 @@ fetch('https://api.spotify.com/v1/me/player/currently-playing?market=DE', {
     "Content-Type": "application/json"
   }
 })
-.then(response => response.json())
+.then(response => {
+  if (response.status === 204) {
+    console.log('yo there is nothing playing')
+    fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", {
+      headers: {
+        Accept: "application/json",
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      let albumName = data.items[0].track.album.name;
+      let songName = data.items[0].track.name;
+      let artistName = data.items[0].track.artists[0].name;
+      document.querySelector('.footer__spotify').innerHTML = `${albumName}, ${artistName} - ${songName}`;
+    })
+  }
+  else if (response.status === 200) {
+    return response.json();
+  }
+})
 .then(data => {
   let albumName = data.item.album.name;
   let songName = data.item.name;
   let artistName = data.item.artists[0].name;
-  document.querySelector('.footer__spotify').innerHTML = `${albumName}, ${artistName} - ${songName}`; 
-  // console.log('The currently playing track is called ' + songName + ' by ' + artistName + ' off the Album ' + albumName + ' .'); 
+  document.querySelector('.footer__spotify').innerHTML = `${albumName}, ${artistName} - ${songName}`;
+  document.querySelector('.footer__onAir').classList.add('onAir-Animation');
 });
-

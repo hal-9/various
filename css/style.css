@@ -153,6 +153,22 @@ footer.darkMode {
   margin: 3px 10px 0 0;
 }
 
+.onAir-Animation {
+  animation: onAir-animation 2s linear infinite;
+}
+
+@keyframes onAir-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .footer__marquee {
   width: 250px;
   white-space: nowrap;

@@ -80,6 +80,8 @@ const redirect_uri = "https://hal-9.github.io/various/"
 const AUTHORIZE = "https://accounts.spotify.com/authorize"
 const client_id = "e1418b9264424319a857c3e2b53b0eb6"
 const client_secret = "7ebfc44506374ab7a5e6809e54930d4e"
+let access_token = ''
+let refresh_token = ''
 
 function requestAuthorization(){
   // console.log('requestAuthorization fired');
@@ -92,66 +94,64 @@ function requestAuthorization(){
   window.location.href = url;
 }
 
-// code = "test"
+code = "AQDy02sJKd2dWq0z4FKp2D_aNEfTC4vFEp0l_Oo42zS142jtAosH5cM4yZLEZXr_PMeWASMAeEhXnoY3aerel5RODb7RQWLnPKYLv5wQX5VJY4i2EozIubCoCTO4sd4ka2g6ZcEwW4eeBsC59xaU3BlaK5iaGM-2t-80cku3vfePxsXQWxZgaiLoBzrV73yUP0y-gdUt4vJIZQOcekky1CoeHcqBqzT_eYblNr4thRbz0n0pP1Tk6i5lTStMeGdTY_kqiLsFq0JLHzUTDqh6_Hja7_Oe_B3xlpBc4qO5Glc-8859fhgIUn8GdyXB0g9GpXDvt15zucj5FXXr-ceONAnXB9BXXQDiCzFdidQ0A7M10fcJkEea81T-xF_a0fbNNZOEi1Nf3XuYxNX2LLiNZhaI5jWr0gBy1PPvJhc7Ed1OIaj1jWKR_Mguhw"
 
-// function fetchAccessToken(code){
-//   // console.log('fetchAccessToken fired');
-//   let body = "grant_type=authorization_code";
-//   body += "&code=" + code;
-//   body += "&redirect_uri=" + encodeURI(redirect_uri);
-//   // console.log(body);
-//   callAuthorizationApi(body);
-// }
+function fetchAccessToken(code){
+  // console.log('fetchAccessToken fired');
+  let body = "grant_type=authorization_code";
+  body += "&code=" + code;
+  body += "&redirect_uri=" + encodeURI(redirect_uri);
+  // console.log(body);
+  callAuthorizationApi(body);
+}
 
-// function refreshAccessToken(){
-//   // console.log('refresh accesstoken fired');
-//   refresh_token = localStorage.getItem("refresh_token");
-//   let body = "grant_type=refresh_token";
-//   body += "&refresh_token=" + refresh_token;
-//   body += "&client_id=" + client_id;
-//   callAuthorizationApi(body);
-// }
+function refreshAccessToken(){
+  // console.log('refresh accesstoken fired');
+  refresh_token = localStorage.getItem("refresh_token");
+  let body = "grant_type=refresh_token";
+  body += "&refresh_token=" + refresh_token;
+  body += "&client_id=" + client_id;
+  callAuthorizationApi(body);
+}
 
-// function callAuthorizationApi(body) {
-//   // console.log('callAuthorizationApi fired');
-//   fetch('https://accounts.spotify.com/api/token', {
-//     method: "POST",
-//     body: body,
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//       "Authorization": "Basic " + btoa(client_id + ":" + client_secret),
-//     }
-//   })
-//   .then(response => handleAuthorizationResponse(response));
-// }
+function callAuthorizationApi(body) {
+  // console.log('callAuthorizationApi fired');
+  fetch('https://accounts.spotify.com/api/token', {
+    method: "POST",
+    body: body,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": "Basic " + btoa(client_id + ":" + client_secret),
+    }
+  })
+  .then(response => handleAuthorizationResponse(response));
+}
 
-// function handleAuthorizationResponse(response) {
-//   // console.log('handleAuthorizationFired');
-//   // console.log(response);
-//   if (response.status === 200) {
-//     // console.log("if fired");
-//     response.json()
-//     .then(bodyData => {
-//       if (bodyData.access_token !== undefined) {
-//         // console.log('access_token ist defined')
-//         access_token = bodyData.access_token;
-//         localStorage.setItem("access_token", access_token);
-//       }
-//       if (bodyData.refresh_token !== undefined) {
-//         refresh_token = bodyData.refresh_token;
-//         localStorage.setItem("refresh_token", refresh_token);
-//       }
-//     })
-//   }
-//   else if (response.status === 400) {
-//     // console.log('else if fired')
-//     refreshAccessToken();
-//     }
-//   else {
-//     alert('there was an error with code ' + response.status);
-//   }
-// }
-// fetchAccessToken(code);  
+function handleAuthorizationResponse(response) {
+  // console.log('handleAuthorizationFired');
+  // console.log(response);
+  if (response.status === 200) {
+    // console.log("if fired");
+    response.json()
+    .then(bodyData => {
+      if (bodyData.access_token !== undefined) {
+        // console.log('access_token ist defined')
+        access_token = bodyData.access_token;
+      }
+      if (bodyData.refresh_token !== undefined) {
+        refresh_token = bodyData.refresh_token;
+      }
+    })
+  }
+  else if (response.status === 400) {
+    // console.log('else if fired')
+    refreshAccessToken();
+    }
+  else {
+    alert('there was an error with code ' + response.status);
+  }
+}
+fetchAccessToken(code);  
 
 // fetch('https://api.spotify.com/v1/me/player/currently-playing?market=DE', {
 //   headers: {

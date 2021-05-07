@@ -97,16 +97,16 @@ function requestAuthorization(){
 code = "AQDy02sJKd2dWq0z4FKp2D_aNEfTC4vFEp0l_Oo42zS142jtAosH5cM4yZLEZXr_PMeWASMAeEhXnoY3aerel5RODb7RQWLnPKYLv5wQX5VJY4i2EozIubCoCTO4sd4ka2g6ZcEwW4eeBsC59xaU3BlaK5iaGM-2t-80cku3vfePxsXQWxZgaiLoBzrV73yUP0y-gdUt4vJIZQOcekky1CoeHcqBqzT_eYblNr4thRbz0n0pP1Tk6i5lTStMeGdTY_kqiLsFq0JLHzUTDqh6_Hja7_Oe_B3xlpBc4qO5Glc-8859fhgIUn8GdyXB0g9GpXDvt15zucj5FXXr-ceONAnXB9BXXQDiCzFdidQ0A7M10fcJkEea81T-xF_a0fbNNZOEi1Nf3XuYxNX2LLiNZhaI5jWr0gBy1PPvJhc7Ed1OIaj1jWKR_Mguhw"
 
 function fetchAccessToken(code){
-  // console.log('fetchAccessToken fired');
+  console.log('fetchAccessToken fired');
   let body = "grant_type=authorization_code";
   body += "&code=" + code;
   body += "&redirect_uri=" + encodeURI(redirect_uri);
-  // console.log(body);
+  console.log(body);
   callAuthorizationApi(body);
 }
 
 function refreshAccessToken(){
-  // console.log('refresh accesstoken fired');
+  console.log('refresh accesstoken fired');
   refresh_token = localStorage.getItem("refresh_token");
   let body = "grant_type=refresh_token";
   body += "&refresh_token=" + refresh_token;
@@ -115,7 +115,7 @@ function refreshAccessToken(){
 }
 
 function callAuthorizationApi(body) {
-  // console.log('callAuthorizationApi fired');
+  console.log('callAuthorizationApi fired');
   fetch('https://accounts.spotify.com/api/token', {
     method: "POST",
     body: body,
@@ -128,10 +128,10 @@ function callAuthorizationApi(body) {
 }
 
 function handleAuthorizationResponse(response) {
-  // console.log('handleAuthorizationFired');
-  // console.log(response);
+  console.log('handleAuthorizationFired');
+  console.log(response);
   if (response.status === 200) {
-    // console.log("if fired");
+    console.log("if fired");
     response.json()
     .then(bodyData => {
       if (bodyData.access_token !== undefined) {
@@ -139,13 +139,13 @@ function handleAuthorizationResponse(response) {
         access_token = bodyData.access_token;
       }
       if (bodyData.refresh_token !== undefined) {
-        console.log('refresh_token')
+        console.log('refresh_token ist defineds')
         refresh_token = bodyData.refresh_token;
       }
     })
   }
   else if (response.status === 400) {
-    // console.log('else if fired')
+    console.log('else if fired')
     refreshAccessToken();
     }
   else {

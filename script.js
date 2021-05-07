@@ -151,7 +151,9 @@ function handleAuthorizationResponse(response) {
     alert('there was an error with code ' + response.status);
   }
 }
-fetchAccessToken(code);  
+fetchAccessToken(code);
+console.log(access_token);
+console.log(refresh_token);
 
 // fetch('https://api.spotify.com/v1/me/player/currently-playing?market=DE', {
 //   headers: {

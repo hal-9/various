@@ -82,7 +82,7 @@ const client_id = "e1418b9264424319a857c3e2b53b0eb6"
 const client_secret = "7ebfc44506374ab7a5e6809e54930d4e"
 
 function requestAuthorization(){
-  // console.log('requestAuthorization fired');
+  console.log('requestAuthorization fired');
   let url = AUTHORIZE;
   url += "?client_id=" + client_id;
   url += "&response_type=code";
@@ -97,7 +97,7 @@ let refreshToken = ''
 let accessToken = ''
 
 function fetchAccessToken(code){
-  // console.log('fetchAccessToken fired');
+  console.log('fetchAccessToken fired');
   let body = "grant_type=authorization_code";
   body += "&code=" + code;
   body += "&redirect_uri=" + encodeURI(redirect_uri);
@@ -106,7 +106,7 @@ function fetchAccessToken(code){
 }
 
 function refreshAccessToken(){
-  // console.log('refresh accesstoken fired');
+  console.log('refresh accesstoken fired');
   let body = "grant_type=refresh_token";
   body += "&refresh_token=" + refreshToken;
   body += "&client_id=" + client_id;
@@ -114,7 +114,7 @@ function refreshAccessToken(){
 }
 
 function callAuthorizationApi(body) {
-  // console.log('callAuthorizationApi fired');
+  console.log('callAuthorizationApi fired');
   fetch('https://accounts.spotify.com/api/token', {
     method: "POST",
     body: body,
@@ -127,24 +127,25 @@ function callAuthorizationApi(body) {
 }
 
 function handleAuthorizationResponse(response) {
-  // console.log('handleAuthorizationFired');
+  console.log('handleAuthorizationFired');
   // console.log(response);
   if (response.status === 200) {
-    // console.log("if fired");
+    console.log("if fired");
     response.json()
     .then(bodyData => {
       if (bodyData.access_token !== undefined) {
         // console.log('access_token ist defined')
         accessToken = bodyData.access_token;
-
+        console.log('accessToken = ' + accessToken)
       }
       if (bodyData.refresh_token !== undefined) {
         refreshToken = bodyData.refreshToken;
+        console.log('refreshToken = ' + refreshToken)
       }
     })
   }
   else if (response.status === 400) {
-    // console.log('else if fired')
+    console.log('else if fired')
     refreshAccessToken();
     }
   else {

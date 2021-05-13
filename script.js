@@ -93,6 +93,8 @@ function requestAuthorization(){
 }
 
 const code = "AQBshmpxKFNGt_W9dpfbMilHgJMXZoaveYC_xhRFVimuLxMWJBIQesXwdHKDC81Lg5bgg9SoEje5BYD0Xzy0-sqS_JlyMTR6m8MHJVgBUhZ1SXE5y1Nq_TQEgPxY5d2QN4rp5LNJdv9qKQ6Oa-XopP33yjjIIFJq5X_xWr8QyEgOhBiMxhgoFyB-jQAex-wCDH6g9K9lM1QhtOPd_4gNU1ctDUTdt6kBh2m6GNIWsj3D5folKb4QRoiNo-pmqGbUGSweuCBsC8XKXMla8_LP7NSzPnGegUQHtMMuIQBxzpbzhX2YdE4eL-HcziaDvz9glAEEc-beOZ4u5pwYWijMXmkjrwZUbz6-F8Ro_aMhcBbsDVYKLPSmJJQvNttk2jMJLRkpin-sxqJM5YdJS3RVYMPiRjirEXHt9loTf1oIObhMESMhYLRR9baaHw"
+let refreshToken = ''
+let accessToken = ''
 
 function fetchAccessToken(code){
   // console.log('fetchAccessToken fired');
@@ -105,9 +107,8 @@ function fetchAccessToken(code){
 
 function refreshAccessToken(){
   // console.log('refresh accesstoken fired');
-  refresh_token = localStorage.getItem("refresh_token");
   let body = "grant_type=refresh_token";
-  body += "&refresh_token=" + refresh_token;
+  body += "&refresh_token=" + refreshToken;
   body += "&client_id=" + client_id;
   callAuthorizationApi(body);
 }
@@ -134,12 +135,11 @@ function handleAuthorizationResponse(response) {
     .then(bodyData => {
       if (bodyData.access_token !== undefined) {
         // console.log('access_token ist defined')
-        access_token = bodyData.access_token;
-        localStorage.setItem("access_token", access_token);
+        accessToken = bodyData.access_token;
+
       }
       if (bodyData.refresh_token !== undefined) {
-        refresh_token = bodyData.refresh_token;
-        localStorage.setItem("refresh_token", refresh_token);
+        refreshToken = bodyData.refreshToken;
       }
     })
   }
@@ -156,7 +156,7 @@ fetchAccessToken(code);
 fetch('https://api.spotify.com/v1/me/player/currently-playing?market=DE', {
   headers: {
     Accept: "application/json",
-    Authorization: "Bearer " + localStorage.getItem("access_token"),
+    Authorization: "Bearer " + accessToken,
     "Content-Type": "application/json"
   }
 })
@@ -166,7 +166,7 @@ fetch('https://api.spotify.com/v1/me/player/currently-playing?market=DE', {
     fetch("https://api.spotify.com/v1/me/player/recently-played?limit=1", {
       headers: {
         Accept: "application/json",
-        Authorization: "Bearer " + localStorage.getItem("access_token"),
+        Authorization: "Bearer " + accessToken,
         "Content-Type": "application/json"
       }
     })

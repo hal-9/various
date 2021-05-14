@@ -74,22 +74,22 @@ setInterval(function () {
   oAnimations[randomPick].style.display = "block";
 }, 5000);
 
-const redirect_uri = "https://hal-9.github.io/various/";
-const AUTHORIZE = "https://accounts.spotify.com/authorize";
-const client_id = "e1418b9264424319a857c3e2b53b0eb6";
-const client_secret = "7ebfc44506374ab7a5e6809e54930d4e";
+// const redirect_uri = "https://hal-9.github.io/various/";
+// const AUTHORIZE = "https://accounts.spotify.com/authorize";
+// const client_id = "e1418b9264424319a857c3e2b53b0eb6";
+// const client_secret = "7ebfc44506374ab7a5e6809e54930d4e";
 
-function requestAuthorization() {
-  console.log("requestAuthorization fired");
-  let url = AUTHORIZE;
-  url += "?client_id=" + client_id;
-  url += "&response_type=code";
-  url += "&redirect_uri=" + encodeURI(redirect_uri);
-  url += "&show_dialog=true";
-  url +=
-    "&scope=user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private";
-  window.location.href = url;
-}
+// function requestAuthorization() {
+//   console.log("requestAuthorization fired");
+//   let url = AUTHORIZE;
+//   url += "?client_id=" + client_id;
+//   url += "&response_type=code";
+//   url += "&redirect_uri=" + encodeURI(redirect_uri);
+//   url += "&show_dialog=true";
+//   url +=
+//     "&scope=user-read-private user-read-email user-modify-playback-state user-read-playback-position user-library-read streaming user-read-playback-state user-read-recently-played playlist-read-private";
+//   window.location.href = url;
+// }
 
 const code =
   "AQBshmpxKFNGt_W9dpfbMilHgJMXZoaveYC_xhRFVimuLxMWJBIQesXwdHKDC81Lg5bgg9SoEje5BYD0Xzy0-sqS_JlyMTR6m8MHJVgBUhZ1SXE5y1Nq_TQEgPxY5d2QN4rp5LNJdv9qKQ6Oa-XopP33yjjIIFJq5X_xWr8QyEgOhBiMxhgoFyB-jQAex-wCDH6g9K9lM1QhtOPd_4gNU1ctDUTdt6kBh2m6GNIWsj3D5folKb4QRoiNo-pmqGbUGSweuCBsC8XKXMla8_LP7NSzPnGegUQHtMMuIQBxzpbzhX2YdE4eL-HcziaDvz9glAEEc-beOZ4u5pwYWijMXmkjrwZUbz6-F8Ro_aMhcBbsDVYKLPSmJJQvNttk2jMJLRkpin-sxqJM5YdJS3RVYMPiRjirEXHt9loTf1oIObhMESMhYLRR9baaHw";
@@ -192,3 +192,7 @@ fetch("/.netlify/functions/weatherUpdate")
   .then((data) => {
     document.querySelector(".temperature").innerHTML = `${data.temperature}°C`;
   });
+
+fetch("/.netlify/functions/spotifyAPI")
+  .then((response) => response.json())
+  .then((data) => console.log("accessToken is = " + data.accessToken));

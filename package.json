@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hal-9/various#readme",
   "dependencies": {
+    "btoa": "^1.2.1",
     "node-fetch": "^2.6.1"
   }
 }
